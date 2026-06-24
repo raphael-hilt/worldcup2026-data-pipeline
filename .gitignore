@@ -216,3 +216,17 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Variables d'environnement
+.env
+
+# Logs Airflow
+logs/
+
+# Dossier data temporaire
+data/
+
+# Cache Python
+__pycache__/
+*.pyc
+*.pyo

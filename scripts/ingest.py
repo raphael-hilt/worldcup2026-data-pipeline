@@ -49,15 +49,16 @@ def create_tables():
     # Table des matchs
     cur.execute("""
         CREATE TABLE IF NOT EXISTS matches (
-            id INTEGER PRIMARY KEY,       -- Identifiant unique du match
-            utc_date TIMESTAMP,           -- Date et heure du match en UTC
-            status VARCHAR(20),           -- Pas Joué, En cours, Fini
-            stage VARCHAR(50),            -- Phase : POules, 16èmes, etc
-            home_team VARCHAR(100),       -- Équipe 1
-            away_team VARCHAR(100),       -- Équipe 2
-            home_score INTEGER,           -- Score équipe 1 (NULL si pas encore joué)
-            away_score INTEGER,           -- Score équipe 2 (NULL si pas encore joué)
-            ingested_at TIMESTAMP DEFAULT NOW()  -- Quand on a récupéré cette donnée
+            id INTEGER PRIMARY KEY,
+            utc_date TIMESTAMP,
+            status VARCHAR(20),           -- SCHEDULED, IN_PLAY, FINISHED
+            stage VARCHAR(50),            -- GROUP_STAGE, ROUND_OF_16, etc.
+            team1 VARCHAR(100),           -- Première équipe
+            team2 VARCHAR(100),           -- Deuxième équipe
+            score_team1 INTEGER,          -- Score équipe 1 (NULL si pas joué)
+            score_team2 INTEGER,          -- Score équipe 2 (NULL si pas joué)
+            winner VARCHAR(100),          -- Gagnant (NULL si nul ou pas joué)
+            ingested_at TIMESTAMP DEFAULT NOW()
         );
     """)
 

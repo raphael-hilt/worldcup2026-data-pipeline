@@ -24,8 +24,12 @@ def get_connection():
     On utilise os.getenv() pour lire les valeurs depuis .env
     et ne jamais écrire les credentials en dur dans le code.
     """
+    host = os.getenv("POSTGRES_HOST", "localhost")
+    # Si POSTGRES_HOST est défini dans .env on l'utilise
+    # Sinon on utilise localhost par défaut (pour les tests manuels)
+
     return psycopg2.connect(
-        host="localhost",
+        host=host,
         database=os.getenv("POSTGRES_DB"),
         user=os.getenv("POSTGRES_USER"),
         password=os.getenv("POSTGRES_PASSWORD")

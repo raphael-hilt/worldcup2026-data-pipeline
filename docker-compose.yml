@@ -32,6 +32,7 @@ services:
       - ./dags:/opt/airflow/dags
       - ./scripts:/opt/airflow/scripts
       - ./logs:/opt/airflow/logs
+      - ./.env:/opt/airflow/.env
     command: standalone
 
   streamlit:
